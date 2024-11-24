@@ -4,6 +4,7 @@ package com.alibakir.financialHouse.controller;
 import com.alibakir.financialHouse.domain.Dto.*;
 import com.alibakir.financialHouse.service.AuthService;
 import com.alibakir.financialHouse.service.RequestService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -35,7 +36,7 @@ public class TransactionReportController {
     }
 
 
-
+    @Operation(summary ="https://sandbox-reporting.rpdpymnt.com/api/v3/client")
     @PostMapping("/client")
     public ResponseEntity<ClientDto> getClient(@Valid @RequestBody TransactionRequestDto requestDto) {
         try {
@@ -51,6 +52,7 @@ public class TransactionReportController {
         }
     }
 
+    @Operation(summary ="https://sandbox-reporting.rpdpymnt.com/api/v3/transactions/report")
     @PostMapping("/transactions/report")
     public ResponseEntity<ReportDto> getTransactionReport(@Valid @RequestBody ReportRequestDto requestDto) {
         try {
@@ -66,6 +68,7 @@ public class TransactionReportController {
         }
     }
 
+    @Operation(summary ="https://sandbox-reporting.rpdpymnt.com/api/v3/transaction/list")
     @PostMapping("/transactions/list")
     public ResponseEntity<TransactionResponseDto> getTransactionList(
             @Valid @RequestBody ReportRequestDto requestDto) {
@@ -82,6 +85,7 @@ public class TransactionReportController {
         }
     }
 
+    @Operation(summary ="https://sandbox-reporting.rpdpymnt.com/api/v3/transaction")
     @PostMapping("/transaction")
     public ResponseEntity<GeneralTransactionResponseDto> getTransaction(@Valid @RequestBody TransactionRequestDto requestDto) {
         try {
